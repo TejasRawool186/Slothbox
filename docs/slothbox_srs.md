@@ -105,9 +105,10 @@ graph TD
         Ingest -->|Local RAG Reasoning| Qwen[Qwen 3:4b]:::modelClass
     end
 
-    subgraph Side-Quest Integrations
+    subgraph Integrated Services
         Bot -->|Audio Synthesis| ElevenLabs[ElevenLabs Voice API]:::sideClass
         Bot -->|Production Observability| Sentry[Sentry Telemetry & Crash Guard]:::sideClass
+        Bot -->|Cross-Session Memory| Backboard[Backboard Memory Layer]:::sideClass
     end
 
     subgraph Zero-Cloud Local Storage

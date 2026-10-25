@@ -73,9 +73,10 @@ graph TD
         Ingest -->|Local RAG Reasoning| Qwen[Qwen 3:4b]:::modelClass
     end
 
-    subgraph Side-Quest Integrations
+    subgraph Integrated Services
         Bot -->|Audio Synthesis| ElevenLabs[ElevenLabs Voice API]:::sideClass
         Bot -->|Production Observability| Sentry[Sentry Telemetry & Crash Guard]:::sideClass
+        Bot -->|Cross-Session Memory| Backboard[Backboard Memory Layer]:::sideClass
     end
 
     subgraph Zero-Cloud Local Storage
@@ -101,13 +102,14 @@ Slothbox is optimized to run smoothly on standard consumer hardware (approximate
 
 ---
 
-## Core Technologies and Side-Quest Implementations
+## Integrated Technology Ecosystem
 
-Slothbox combines local open-weight artificial intelligence with production-grade tooling:
+Slothbox combines local open-weight artificial intelligence with production-grade integrations:
 
 * **Telegram Bot API (python-telegram-bot):** Provides an instantaneous, cross-platform interface across mobile, tablet, and desktop with zero friction and interactive inline keyboard buttons.
 * **Ollama Runtime:** Runs quantized open-weight models locally on CPU or GPU with zero cloud API dependencies.
 * **Local SQLite Vector Storage:** Eliminates external vector database daemons by storing 768-dimensional float32 vector BLOBs directly alongside relational metadata in `slothbox.db`, computing cosine similarity in-process with pure Python and NumPy.
+* **Backboard AI Memory:** Provides cross-session conversational memory persistence, thread continuity, and state synchronization across long-running interactions.
 * **ElevenLabs Voice AI:** Generates realistic audio voice notes (`/voice <id>`) for hands-free listening while commuting or exercising.
 * **Sentry Production Observability:** Implements full error tracing, automated crash isolation, and performance monitoring via the official Sentry Python SDK.
 * **BeautifulSoup4 and Readability:** Cleans web articles, removes ads and boilerplate, and generates clean offline reader cards (`/read <id>`).
@@ -214,6 +216,7 @@ cp .env.example .env
 Configure your credentials in `.env`:
 * `TELEGRAM_BOT_TOKEN`: Your token obtained from [@BotFather](https://t.me/BotFather)
 * `TELEGRAM_ALLOWED_USER_ID`: Your numeric Telegram user ID from [@userinfobot](https://t.me/userinfobot)
+* `BACKBOARD_API_KEY`: (Optional) Your API key for cross-session agent memory
 * `ELEVENLABS_API_KEY`: (Optional) Your API key for voice notes
 * `SENTRY_DSN`: (Optional) Sentry DSN for performance and crash monitoring
 
