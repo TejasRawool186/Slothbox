@@ -86,10 +86,6 @@ graph TD
     Bot -->|Universal Retrieval & Grounded RAG| User
 ```
 
-<p align="center">
-  <img src="docs/images/architecture.png" alt="Slothbox System Architecture Diagram" width="85%"/>
-</p>
-
 ---
 
 ## Open-Weight Model Roster
